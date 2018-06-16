@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<config>
+  <shop>wkl</shop>
+  <from>yangglemu@163.com</from>
+  <to>yangglemu@163.com</to>
+  <user>yangglemu</user>
+  <pwd>yuanbo132</pwd>
+  <!--定时器间隔，单位分钟-->
+  <minute>5</minute>
+</config>

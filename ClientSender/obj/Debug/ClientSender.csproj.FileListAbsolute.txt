@@ -1,0 +1,13 @@
+D:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.exe.config
+D:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.exe
+D:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.pdb
+D:\VS2013\ClientSender\ClientSender\bin\Debug\LumiSoft.Net.dll
+D:\VS2013\ClientSender\ClientSender\bin\Debug\MySql.Data.dll
+D:\VS2013\ClientSender\ClientSender\bin\Debug\LumiSoft.Net.xml
+D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.Sender.resources
+D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.Properties.Resources.resources
+D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.csproj.GenerateResource.Cache
+D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.exe
+D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.pdb
+D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.csprojResolveAssemblyReference.cache
+D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.DateSelect.resources
