@@ -1,35 +1,11 @@
-D:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.exe.config
-D:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.exe
-D:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.pdb
-D:\VS2013\ClientSender\ClientSender\bin\Debug\LumiSoft.Net.dll
-D:\VS2013\ClientSender\ClientSender\bin\Debug\MySql.Data.dll
-<<<<<<< HEAD
-D:\VS2013\ClientSender\ClientSender\bin\Debug\LumiSoft.Net.xml
-=======
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.Sender.resources
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.Properties.Resources.resources
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.csproj.GenerateResource.Cache
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.exe
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.pdb
-<<<<<<< HEAD
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.csprojResolveAssemblyReference.cache
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.DateSelect.resources
-=======
-C:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.exe.config
-C:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.exe
-C:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.pdb
-C:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.exe
-C:\VS2013\ClientSender\ClientSender\bin\Debug\ClientSender.pdb
-C:\VS2013\ClientSender\ClientSender\bin\Debug\LumiSoft.Net.xml
-C:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.csprojResolveAssemblyReference.cache
-C:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.Sender.resources
-C:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.Properties.Resources.resources
-C:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.csproj.GenerateResource.Cache
-C:\VS2013\ClientSender\ClientSender\bin\Debug\MySql.Data.dll
-C:\VS2013\ClientSender\ClientSender\bin\Debug\MySql.Data.xml
-C:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.DateSelect.resources
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.DateSelect.resources
-D:\VS2013\ClientSender\ClientSender\bin\Debug\MySql.Data.xml
-D:\VS2013\ClientSender\ClientSender\obj\Debug\ClientSender.csprojResolveAssemblyReference.cache
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
+C:\VS2013\ClientSender\ClientSender\ClientSender\bin\Debug\ClientSender.exe.config
+C:\VS2013\ClientSender\ClientSender\ClientSender\obj\Debug\ClientSender.DateSelect.resources
+C:\VS2013\ClientSender\ClientSender\ClientSender\obj\Debug\ClientSender.Sender.resources
+C:\VS2013\ClientSender\ClientSender\ClientSender\obj\Debug\ClientSender.Properties.Resources.resources
+C:\VS2013\ClientSender\ClientSender\ClientSender\obj\Debug\ClientSender.csproj.GenerateResource.Cache
+C:\VS2013\ClientSender\ClientSender\ClientSender\bin\Debug\ClientSender.exe
+C:\VS2013\ClientSender\ClientSender\ClientSender\bin\Debug\ClientSender.pdb
+C:\VS2013\ClientSender\ClientSender\ClientSender\obj\Debug\ClientSender.exe
+C:\VS2013\ClientSender\ClientSender\ClientSender\obj\Debug\ClientSender.pdb
+C:\VS2013\ClientSender\ClientSender\ClientSender\bin\Debug\MySql.Data.dll
+C:\VS2013\ClientSender\ClientSender\ClientSender\bin\Debug\MySql.Data.xml

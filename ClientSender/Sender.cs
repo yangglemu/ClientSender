@@ -30,36 +30,18 @@ namespace ClientSender
         //数据库连接字符串
         string cs;
         /// <summary>
-<<<<<<< HEAD
         /// richtextbox的内容
-=======
         /// 窗体显示时赋值给rechtextbox
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
         /// </summary>
         StringBuilder sb = new StringBuilder();
         public Sender()
         {
             InitializeComponent();
-<<<<<<< HEAD
-            this.button_SelectDateToSend.Click += (obj, arg) =>
-                {
-                    var select = new DateSelect();
-                    if (DialogResult.OK == select.ShowDialog(this))
-                    {
-                        SendMail(select.SelectedDate);
-                    }
-                };
-=======
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
         }
         private void Sender_Shown(object sender, EventArgs e)
         {
             var doc = new XmlDocument();
-<<<<<<< HEAD
             doc.Load(Application.StartupPath + @"\Mail.xml");
-=======
-            doc.Load(Application.StartupPath + "\\Mail.xml");
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
             this.shop = doc.SelectSingleNode("/config/shop").InnerText;
             this.fromMailBox = doc.SelectSingleNode("/config/from").InnerText;
             this.toMailBox = doc.SelectSingleNode("/config/to").InnerText;
@@ -68,40 +50,19 @@ namespace ClientSender
             this.minute = int.Parse(doc.SelectSingleNode("/config/minute").InnerText);
             this.cs = string.Format("server=localhost;database={0};user=root;password=yuanbo960502;", this.shop);
             this.hour = DateTime.Now.Hour + 1;
-<<<<<<< HEAD
-            timer_tmp.Interval = 10 * 1000;// second
-=======
             timer_tmp.Interval = 10 * 1000;//10 second
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
             timer_tmp.Start();
             var dt = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
             dt = new DateTime(dt.Year, dt.Month, dt.Day, 23, 59, 59);
             SendMail(dt);
             this.Hide();
         }
-<<<<<<< HEAD
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case WM_QUERYENDSESSION:
-                    if ((int)m.WParam == 0x11 && (int)m.LParam == 0x11)
-                    {
-                        Application.Exit();
-                    }
-                    break;
-                default:
-                    break;
-            }
-            base.WndProc(ref m);
-=======
         private void Sender_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
                 this.button_Close_Click(null, null);
             }
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
         }
         private void Sender_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -112,9 +73,7 @@ namespace ClientSender
                     e.Cancel = true;
                     break;
                 case CloseReason.ApplicationExitCall:
-<<<<<<< HEAD
                     SendMail(DateTime.Now);
-=======
                     try
                     {
                         SendMail(DateTime.Now);
@@ -123,28 +82,11 @@ namespace ClientSender
                     {
                         MessageBox.Show("发送邮件出错：" + exp.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
                     break;
                 default:
                     break;
             }
         }
-<<<<<<< HEAD
-        private void Sender_Resize(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.button_Close_Click(null, null);
-            }
-        }
-        private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Show();
-            richTextBox.Clear();
-            richTextBox.Text = sb.ToString();
-            if (this.WindowState == FormWindowState.Minimized)
-                this.WindowState = FormWindowState.Normal;
-=======
         private void SetRichTextAndShowForm(string text)
         {
             this.Show();
@@ -154,32 +96,26 @@ namespace ClientSender
         private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.SetRichTextAndShowForm(sb.ToString());
-            if(this.WindowState==FormWindowState.Minimized)
-            this.WindowState = FormWindowState.Normal;
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
+            if (this.WindowState == FormWindowState.Minimized)
+                this.WindowState = FormWindowState.Normal;
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-<<<<<<< HEAD
-=======
         private void button_SelectDateToSend_Click(object sender, EventArgs e)
         {
             var select = new DateSelect();
             if (DialogResult.OK == select.ShowDialog(this))
             {
-                SendMail(select.Date);
+                SendMail(select.SelectedDate);
             }
         }
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
         private void button_Close_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
         const int WM_QUERYENDSESSION = 0x11;
-<<<<<<< HEAD
-=======
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -195,7 +131,6 @@ namespace ClientSender
             }
             base.WndProc(ref m);
         }
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
         private void button_Clear_Click(object sender, EventArgs e)
         {
             this.richTextBox.Clear();
@@ -270,10 +205,7 @@ namespace ClientSender
         }
         private void SendMail(DateTime datetime)
         {
-<<<<<<< HEAD
             var end = "------------------------------\r\n";
-=======
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
             try
             {
                 DeleteMail(datetime);
@@ -281,10 +213,7 @@ namespace ClientSender
             catch (Exception e)
             {
                 sb.Append("DeleteMail Error: " + e.Message + "\r\n");
-<<<<<<< HEAD
                 sb.Append(end);
-=======
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
                 return;
             }
             var date = datetime.ToString("yyyy-MM-dd");
@@ -306,22 +235,14 @@ namespace ClientSender
                     sb.Append(se.Message + "\r\n");
                 }
             }
-<<<<<<< HEAD
             sb.Append(end);
-=======
-            sb.Append("-----------------------------\r\n");
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
         }
         private void DeleteMail(DateTime datetime)
         {
             using (var pop3 = new POP3_Client())
             {
                 pop3.Connect("pop.163.com", 995, true);
-<<<<<<< HEAD
                 pop3.Timeout = 2000;
-=======
-                pop3.Timeout = 3000;
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
                 pop3.Login(user, pwd);
                 var date = datetime.ToString("yyyy-MM-dd");
                 var del = 0;
@@ -351,12 +272,8 @@ namespace ClientSender
             var now = DateTime.Now;
             if (now.Hour == this.hour && now.Minute == this.minute)
             {
-<<<<<<< HEAD
                 //停止用于启动主定时器的临时定时器
-                timer_tmp.Stop();
-=======
                 this.timer_tmp.Stop();
->>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
                 SendMail(now);
                 this.timer.Interval = 60 * 60 * 1000;//one hour
                 this.timer.Start();
