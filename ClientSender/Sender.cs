@@ -115,7 +115,6 @@ namespace ClientSender
         }
         private void button_Close_Click(object sender, EventArgs e)
         {
-            this.notifyIcon_ClientSender.Visible = true;
             this.Hide();
         }
         const int WM_QUERYENDSESSION = 0x11;
@@ -130,7 +129,6 @@ namespace ClientSender
         private string CreateMailBody(DateTime datetime)
         {
             var date = datetime.ToString("yyyy-MM-dd");
-
             var xml = new XmlDocument();
             xml.AppendChild(xml.CreateXmlDeclaration("1.0", "utf-8", "no"));
             var root = xml.CreateElement(this.shop);
@@ -261,6 +259,7 @@ namespace ClientSender
             var now = DateTime.Now;
             if (now.Hour == this.hour && now.Minute == this.minute)
             {
+                //停止用于启动主定时器的临时定时器
                 timer_tmp.Stop();
                 SendMail(now);
                 this.timer.Interval = 60 * 60 * 1000;//one hour
