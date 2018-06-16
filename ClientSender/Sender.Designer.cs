@@ -124,12 +124,20 @@
             // 
             // button_SelectDateToSend
             // 
+<<<<<<< HEAD
             this.button_SelectDateToSend.Location = new System.Drawing.Point(694, 335);
+=======
+            this.button_SelectDateToSend.Location = new System.Drawing.Point(694, 333);
+>>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
             this.button_SelectDateToSend.Name = "button_SelectDateToSend";
             this.button_SelectDateToSend.Size = new System.Drawing.Size(103, 23);
             this.button_SelectDateToSend.TabIndex = 2;
             this.button_SelectDateToSend.Text = "择期发送";
             this.button_SelectDateToSend.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
+=======
+            this.button_SelectDateToSend.Click += new System.EventHandler(this.button_SelectDateToSend_Click);
+>>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
             // 
             // Sender
             // 
@@ -141,12 +149,20 @@
             this.Controls.Add(this.button_Exit);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.richTextBox);
+<<<<<<< HEAD
+=======
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+>>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
             this.Icon = global::ClientSender.Properties.Resources.yuan;
             this.MaximizeBox = false;
             this.Name = "Sender";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientSender";
+<<<<<<< HEAD
+=======
+            this.TopMost = true;
+>>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sender_FormClosing);
             this.Shown += new System.EventHandler(this.Sender_Shown);
             this.Resize += new System.EventHandler(this.Sender_Resize);

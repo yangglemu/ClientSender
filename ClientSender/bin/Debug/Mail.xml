@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <config>
+<<<<<<< HEAD
   <shop>wkl</shop>
+=======
+  <shop>hhb</shop>
+>>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
   <from>yangglemu@163.com</from>
   <to>yangglemu@163.com</to>
   <user>yangglemu</user>
   <pwd>yuanbo132</pwd>
   <!--定时器间隔，单位分钟-->
+<<<<<<< HEAD
   <minute>5</minute>
+=======
+  <minute>9</minute>
+>>>>>>> a9029ff461152641d6f0a30d0e49ca0b697fbee1
 </config>
