@@ -73,7 +73,6 @@ namespace ClientSender
                     e.Cancel = true;
                     break;
                 case CloseReason.ApplicationExitCall:
-                    SendMail(DateTime.Now);
                     try
                     {
                         SendMail(DateTime.Now);
