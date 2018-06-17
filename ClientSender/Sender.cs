@@ -73,14 +73,7 @@ namespace ClientSender
                     e.Cancel = true;
                     break;
                 case CloseReason.ApplicationExitCall:
-                    try
-                    {
-                        SendMail(DateTime.Now);
-                    }
-                    catch (Exception exp)
-                    {
-                        MessageBox.Show("发送邮件出错：" + exp.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    SendMail(DateTime.Now);
                     break;
                 default:
                     break;
