@@ -102,9 +102,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Mail.xml">
+    <None Include="bin\Debug\Mail.xml">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <EmbeddedResource Include="Resources\yuan.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
