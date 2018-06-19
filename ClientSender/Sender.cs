@@ -23,6 +23,8 @@ namespace ClientSender
         //发送、接受邮箱及用户名
         string user, pwd;
         string fromMailBox, toMailBox;
+        string smtphost;
+        string pop3host;
         //在整点hour超出minute秒执行定时器任务,避免多地同时使用邮箱
         int minute;
         int hour;
@@ -43,6 +45,8 @@ namespace ClientSender
             var doc = new XmlDocument();
             doc.Load(Application.StartupPath + @"\Mail.xml");
             this.shop = doc.SelectSingleNode("/config/shop").InnerText;
+            this.smtphost = doc.SelectSingleNode("/config/smtp").InnerText;
+            this.pop3host = doc.SelectSingleNode("/config/pop3").InnerText;
             this.fromMailBox = doc.SelectSingleNode("/config/from").InnerText;
             this.toMailBox = doc.SelectSingleNode("/config/to").InnerText;
             this.user = doc.SelectSingleNode("/config/user").InnerText;
@@ -213,7 +217,7 @@ namespace ClientSender
             mail.Subject = this.shop + "@" + date;
             mail.Body = CreateMailBody(datetime);
             mail.IsBodyHtml = false;
-            using (var smtp = new SmtpClient("smtp.163.com", 25))
+            using (var smtp = new SmtpClient(this.smtphost, 25))
             {
                 smtp.Credentials = new NetworkCredential(user, pwd);
                 smtp.Timeout = 2000;
@@ -233,7 +237,7 @@ namespace ClientSender
         {
             using (var pop3 = new POP3_Client())
             {
-                pop3.Connect("pop.163.com", 995, true);
+                pop3.Connect(pop3host, 995, true);
                 pop3.Timeout = 2000;
                 pop3.Login(user, pwd);
                 var date = datetime.ToString("yyyy-MM-dd");
