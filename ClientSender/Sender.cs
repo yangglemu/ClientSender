@@ -232,6 +232,11 @@ namespace ClientSender
                 }
             }
             sb.Append(end);
+            if (this.Visible)
+            {
+                this.richTextBox.Clear();
+                this.richTextBox.Text = sb.ToString();
+            }
         }
         private void DeleteMail(DateTime datetime)
         {
