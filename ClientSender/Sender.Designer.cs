@@ -124,7 +124,6 @@
             // 
             // button_SelectDateToSend
             // 
-            this.button_SelectDateToSend.Location = new System.Drawing.Point(694, 335);
             this.button_SelectDateToSend.Location = new System.Drawing.Point(694, 333);
             this.button_SelectDateToSend.Name = "button_SelectDateToSend";
             this.button_SelectDateToSend.Size = new System.Drawing.Size(103, 23);
@@ -150,7 +149,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientSender";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sender_FormClosing);
             this.Shown += new System.EventHandler(this.Sender_Shown);
             this.Resize += new System.EventHandler(this.Sender_Resize);
