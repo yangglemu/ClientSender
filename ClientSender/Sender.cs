@@ -36,9 +36,50 @@ namespace ClientSender
         /// 窗体显示时赋值给rechtextbox
         /// </summary>
         StringBuilder sb = new StringBuilder();
+        int countMail = 0;
         public Sender()
         {
             InitializeComponent();
+            backgroundWorker.DoWork += backgroundWorker_DoWork;
+            backgroundWorker.ProgressChanged += backgroundWorker_ProgressChanged;
+            backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted_First;
+        }
+
+        void backgroundWorker_RunWorkerCompleted_First(object sender, RunWorkerCompletedEventArgs e)
+        {
+            backgroundWorker.RunWorkerCompleted -= backgroundWorker_RunWorkerCompleted_First;
+            backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
+            backgroundWorker_RunWorkerCompleted(null, null);
+            this.Hide();
+        }
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            countMail++;
+            label2.Text = string.Format("本次共发送{0}封邮件", countMail.ToString("00"));            
+        }
+
+        void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+            label1.Text = string.Format("{0}%", e.ProgressPercentage.ToString("00"));
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            backgroundWorker.ReportProgress(0);
+            var dt = (DateTime)e.Argument;
+            backgroundWorker.ReportProgress(10);
+            try
+            {
+                DeleteMail(dt);
+            }
+            catch (Exception exp)
+            {
+                sb.Append("DeleteMail Error: " + exp.Message + "\r\n");
+            }
+            backgroundWorker.ReportProgress(60);
+            SendMail(dt);
+            backgroundWorker.ReportProgress(100);
         }
         private void Sender_Shown(object sender, EventArgs e)
         {
@@ -58,8 +99,7 @@ namespace ClientSender
             timer_tmp.Start();
             var dt = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
             dt = new DateTime(dt.Year, dt.Month, dt.Day, 23, 59, 59);
-            SendMail(dt);
-            this.Hide();
+            backgroundWorker.RunWorkerAsync(dt);
         }
         private void Sender_Resize(object sender, EventArgs e)
         {
@@ -77,7 +117,15 @@ namespace ClientSender
                     e.Cancel = true;
                     break;
                 case CloseReason.ApplicationExitCall:
-                    SendMail(DateTime.Now);
+                    var dialog = new MyDialog();
+                    dialog.StartPosition = FormStartPosition.CenterScreen;
+                    backgroundWorker.RunWorkerCompleted -= backgroundWorker_RunWorkerCompleted;
+                    backgroundWorker.RunWorkerCompleted += (obj, args) =>
+                    {
+                        Environment.Exit(0);
+                    };
+                    dialog.Shown += (o, arg) => { backgroundWorker.RunWorkerAsync(DateTime.Now); };
+                    dialog.ShowDialog();
                     break;
                 default:
                     break;
@@ -91,12 +139,14 @@ namespace ClientSender
         }
         private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.ShowInTaskbar = true;
             this.SetRichTextAndShowForm(sb.ToString());
             if (this.WindowState == FormWindowState.Minimized)
                 this.WindowState = FormWindowState.Normal;
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Show();
             Application.Exit();
         }
         private void button_SelectDateToSend_Click(object sender, EventArgs e)
@@ -104,12 +154,13 @@ namespace ClientSender
             var select = new DateSelect();
             if (DialogResult.OK == select.ShowDialog(this))
             {
-                SendMail(select.SelectedDate);
+                backgroundWorker.RunWorkerAsync(select.SelectedDate);
             }
         }
         private void button_Close_Click(object sender, EventArgs e)
         {
             this.Hide();
+            this.ShowInTaskbar = false;
         }
         const int WM_QUERYENDSESSION = 0x11;
         protected override void WndProc(ref Message m)
@@ -119,6 +170,7 @@ namespace ClientSender
                 case WM_QUERYENDSESSION:
                     if ((int)m.WParam == 0x11 && (int)m.LParam == 0x11)
                     {
+                        this.Show();
                         Application.Exit();
                     }
                     break;
@@ -133,7 +185,7 @@ namespace ClientSender
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-            SendMail(DateTime.Now);
+            backgroundWorker.RunWorkerAsync(DateTime.Now);
         }
         private string CreateMailBody(DateTime datetime)
         {
@@ -202,16 +254,6 @@ namespace ClientSender
         private void SendMail(DateTime datetime)
         {
             var end = "------------------------------\r\n";
-            try
-            {
-                DeleteMail(datetime);
-            }
-            catch (Exception e)
-            {
-                sb.Append("DeleteMail Error: " + e.Message + "\r\n");
-                sb.Append(end);
-                return;
-            }
             var date = datetime.ToString("yyyy-MM-dd");
             var mail = new MailMessage(fromMailBox, toMailBox);
             mail.Subject = this.shop + "@" + date;
@@ -220,7 +262,7 @@ namespace ClientSender
             using (var smtp = new SmtpClient(this.smtphost, 25))
             {
                 smtp.Credentials = new NetworkCredential(user, pwd);
-                smtp.Timeout = 2000;
+                smtp.Timeout = 3000;
                 try
                 {
                     smtp.Send(mail);
@@ -232,18 +274,13 @@ namespace ClientSender
                 }
             }
             sb.Append(end);
-            if (this.Visible)
-            {
-                this.richTextBox.Clear();
-                this.richTextBox.Text = sb.ToString();
-            }
         }
         private void DeleteMail(DateTime datetime)
         {
             using (var pop3 = new POP3_Client())
             {
                 pop3.Connect(pop3host, 995, true);
-                pop3.Timeout = 2000;
+                pop3.Timeout = 3000;
                 pop3.Login(user, pwd);
                 var date = datetime.ToString("yyyy-MM-dd");
                 var del = 0;
@@ -275,7 +312,7 @@ namespace ClientSender
             {
                 //停止用于启动主定时器的临时定时器
                 this.timer_tmp.Stop();
-                SendMail(now);
+                backgroundWorker.RunWorkerAsync(now);
                 this.timer.Interval = 60 * 60 * 1000;//one hour
                 this.timer.Start();
             }

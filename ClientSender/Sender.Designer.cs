@@ -40,6 +40,10 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.timer_tmp = new System.Windows.Forms.Timer(this.components);
             this.button_SelectDateToSend = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip_NotifyIcon.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,13 +53,13 @@
             this.richTextBox.Location = new System.Drawing.Point(0, 0);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.ReadOnly = true;
-            this.richTextBox.Size = new System.Drawing.Size(663, 540);
+            this.richTextBox.Size = new System.Drawing.Size(567, 540);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
             // 
             // button_Clear
             // 
-            this.button_Clear.Location = new System.Drawing.Point(694, 127);
+            this.button_Clear.Location = new System.Drawing.Point(649, 241);
             this.button_Clear.Name = "button_Clear";
             this.button_Clear.Size = new System.Drawing.Size(103, 23);
             this.button_Clear.TabIndex = 1;
@@ -65,7 +69,7 @@
             // 
             // button_Exit
             // 
-            this.button_Exit.Location = new System.Drawing.Point(694, 384);
+            this.button_Exit.Location = new System.Drawing.Point(649, 442);
             this.button_Exit.Name = "button_Exit";
             this.button_Exit.Size = new System.Drawing.Size(103, 23);
             this.button_Exit.TabIndex = 2;
@@ -75,7 +79,7 @@
             // 
             // button_Close
             // 
-            this.button_Close.Location = new System.Drawing.Point(694, 175);
+            this.button_Close.Location = new System.Drawing.Point(649, 289);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(103, 23);
             this.button_Close.TabIndex = 3;
@@ -124,7 +128,7 @@
             // 
             // button_SelectDateToSend
             // 
-            this.button_SelectDateToSend.Location = new System.Drawing.Point(694, 333);
+            this.button_SelectDateToSend.Location = new System.Drawing.Point(649, 391);
             this.button_SelectDateToSend.Name = "button_SelectDateToSend";
             this.button_SelectDateToSend.Size = new System.Drawing.Size(103, 23);
             this.button_SelectDateToSend.TabIndex = 2;
@@ -132,11 +136,43 @@
             this.button_SelectDateToSend.UseVisualStyleBackColor = true;
             this.button_SelectDateToSend.Click += new System.EventHandler(this.button_SelectDateToSend_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(596, 74);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(200, 5);
+            this.progressBar1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(685, 89);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "00%";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(634, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 12);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "本次共发送 00 封邮件";
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            // 
             // Sender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 540);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.button_SelectDateToSend);
             this.Controls.Add(this.button_Exit);
@@ -146,14 +182,15 @@
             this.Icon = global::ClientSender.Properties.Resources.yuan;
             this.MaximizeBox = false;
             this.Name = "Sender";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientSender";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sender_FormClosing);
             this.Shown += new System.EventHandler(this.Sender_Shown);
             this.Resize += new System.EventHandler(this.Sender_Resize);
             this.contextMenuStrip_NotifyIcon.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -170,6 +207,10 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer timer_tmp;
         private System.Windows.Forms.Button button_SelectDateToSend;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 

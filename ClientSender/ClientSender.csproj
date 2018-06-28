@@ -64,6 +64,12 @@
     <Compile Include="DateSelect.Designer.cs">
       <DependentUpon>DateSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyDialog.Designer.cs">
+      <DependentUpon>MyDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sender.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DateSelect.resx">
       <DependentUpon>DateSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyDialog.resx">
+      <DependentUpon>MyDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sender.resx">
       <DependentUpon>Sender.cs</DependentUpon>
