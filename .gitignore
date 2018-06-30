@@ -1,0 +1,9 @@
+#.gitignore
+
+*.suo
+
+#bin
+/*/bin/
+
+#obj
+/*/obj/
