@@ -55,7 +55,8 @@ namespace ClientSender
         void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             countMail++;
-            label2.Text = string.Format("本次共发送{0}封邮件", countMail.ToString("00"));            
+            label2.Text = string.Format("本次共发送{0}封邮件", countMail.ToString("00"));
+            SetRichTextAndShowForm();
         }
 
         void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -131,16 +132,15 @@ namespace ClientSender
                     break;
             }
         }
-        private void SetRichTextAndShowForm(string text)
-        {
-            this.Show();
+        private void SetRichTextAndShowForm()
+        {            
             this.richTextBox.Clear();
-            this.richTextBox.Text = text;
+            this.richTextBox.Text = sb.ToString();
         }
         private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.ShowInTaskbar = true;
-            this.SetRichTextAndShowForm(sb.ToString());
+            this.Show();
             if (this.WindowState == FormWindowState.Minimized)
                 this.WindowState = FormWindowState.Normal;
         }
