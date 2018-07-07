@@ -184,7 +184,6 @@
             this.Name = "Sender";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientSender";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sender_FormClosing);
             this.Shown += new System.EventHandler(this.Sender_Shown);
             this.Resize += new System.EventHandler(this.Sender_Resize);
